@@ -1,0 +1,93 @@
+/*§
+  ===========================================================================
+  GraphsJ - Algorithms
+  ===========================================================================
+  Copyright (C) 2009-2015 Gianluca Costa
+  ===========================================================================
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as
+  published by the Free Software Foundation, either version 3 of the
+  License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/gpl-3.0.html>.
+  ===========================================================================
+*/
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://dl.bintray.com/giancosta86/Hephaestus'
+        }
+
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'info.gianlucacosta.moonlicense:moonlicense-gradle:3.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
+        classpath 'info.gianlucacosta.aurora:aurora:2.0'
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'info.gianlucacosta.aurora'
+
+
+group = 'info.gianlucacosta.graphsj'
+archivesBaseName = 'graphsj-algorithms'
+version = '3.5'
+
+description = 'GraphsJ - Built-in algorithms'
+
+
+
+dependencies {
+    compile 'info.gianlucacosta.graphsj:graphsj-sdk:3.5'
+
+    testCompile 'info.gianlucacosta.arcontes:arcontes-test:1.5'
+
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+
+    testCompile 'junit:junit:4.11'
+}
+
+
+
+aurora {
+    docTask = 'javadoc'
+    gitHubUser = 'giancosta86'
+
+    author {
+        name = 'Gianluca Costa'
+        email = 'gianluca@gianlucacosta.info'
+        url = 'http://gianlucacosta.info/'
+    }
+
+    bintray {
+        user = project.bintrayUser
+        key = project.bintrayKey
+        repo = 'Hephaestus'
+        licenses = ['GPL-3.0']
+        labels = ['GraphsJ', 'graphs', 'algorithms', 'library', 'Java']
+    }
+}
+
+
+moonLicense {
+    license = gpl3
+
+    productInfo {
+        productName = 'GraphsJ - Algorithms'
+        inceptionYear = 2009
+        copyrightHolder = 'Gianluca Costa'
+    }
+
+}
